@@ -1,12 +1,15 @@
-import { useState } from 'react'
 import { Canvas } from './components/Canvas/Canvas.jsx'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { AddedNode } from './components/AddedNode/AddedNode.jsx'
+import { ShowData } from './components/ShowData/ShowData.jsx'
+
 import './App.css'
 
 function App() {
-
-  return (<Canvas />)
+  return (<><Canvas />
+    <div className='box-btns'>
+      <AddedNode /><ShowData />
+    </div>
+  </>)
 }
 
 
