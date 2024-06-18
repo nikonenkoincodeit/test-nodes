@@ -1,0 +1,9 @@
+export const CANVAS_WIDTH = 1200;
+export const CANVAS_HEIGHT = 600;
+export const NODE_WIDTH = 100;
+export const NODE_HEIGHT = 40;
+export const CIRCLE_RADIUS = 8;
+export const CIRCLE_TOP_Y = 0;
+export const CIRCLE_TOP_X = 50;
+export const CIRCLE_BOTTOM_X = 50;
+export const CIRCLE_BOTTOM_Y = 40;

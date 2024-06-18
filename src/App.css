@@ -18,6 +18,11 @@
   font-size: 16px;
 }
 
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .btn-success {
   background-color: #28a745;
   border-color: #28a745;

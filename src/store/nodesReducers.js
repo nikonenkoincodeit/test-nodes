@@ -1,25 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const nodesSlice = createSlice({
-  name: "counter",
+  name: "nodes",
   initialState: {
-    data: [
-      // {
-      //   id: 1,
-      //   title: "Node 111",
-      //   x: 20,
-      //   y: 50,
-      //   value: "123",
-      //   lines: [],
-      //   fill: "green",
-      // },
-    ],
+    data: [],
   },
   reducers: {
     updateValue: (state, action) => {
       state.data = state.data.map((node) => {
-        if (node.id.toString() === action.payload.id) {
+        if (node.id === action.payload.id) {
           return { ...node, value: action.payload.value };
+        }
+        return node;
+      });
+    },
+    updatePositionNode: (state, action) => {
+      state.data = state.data.map((node) => {
+        if (node.id === action.payload.id) {
+          return { ...node, x: action.payload.x, y: action.payload.y };
+        }
+        return node;
+      });
+    },
+    connectALineToAPoint: (state, action) => {
+      state.data = state.data.map((node) => {
+        if (node.id === action.payload.parentId) {
+          return {
+            ...node,
+            [action.payload.position]: [
+              ...node[action.payload.position],
+              action.payload.id,
+            ],
+          };
         }
         return node;
       });
@@ -27,19 +39,14 @@ export const nodesSlice = createSlice({
     addNode: (state, action) => {
       state.data.push(action.payload);
     },
-    // increment: (state, val) => {
-    //   console.log("val ", val);
-    //   state.value += 1;
-    // },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // },
   },
 });
 
-export const { addNode, updateValue } = nodesSlice.actions;
+export const {
+  addNode,
+  updateValue,
+  updatePositionNode,
+  connectALineToAPoint,
+} = nodesSlice.actions;
 
 export default nodesSlice.reducer;
